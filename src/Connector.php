@@ -446,7 +446,7 @@ class Connector {
 	 * @return User the User object
 	 * @throws Exception If the API returns an error
 	 */
-	public function getUser(array $fields = self::FIELDS_U_ALL, bool $get_username = false) {
+	public function getUser(array $fields = [self::FIELD_U_OPENID, self::FIELD_U_UNIONID, self::FIELD_U_AVATAR, self::FIELD_U_DISPLAYNAME, self::FIELDS_U_USERNAME], bool $get_username = false) {
 		try {
 			$json = $this->getUserInfo($fields);
 			return User::fromJson($json, $get_username);
