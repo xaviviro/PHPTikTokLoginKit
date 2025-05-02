@@ -296,7 +296,7 @@ class Connector {
 	 * @return object the JSON containing the user data
 	 * @throws Exception If the API returns an error
 	 */
-	public function getUserInfo(array $fields = [self::FIELD_U_OPENID, self::FIELD_U_UNIONID, self::FIELD_U_AVATAR, self::FIELD_U_DISPLAYNAME, self::FIELDS_U_USERNAME])
+	public function getUserInfo(array $fields = [self::FIELD_U_OPENID, self::FIELD_U_UNIONID, self::FIELD_U_AVATAR, self::FIELD_U_DISPLAYNAME, self::FIELDS_U_USERNAME]){
 		foreach ($fields as $f) {
 			if (!in_array($f, self::FIELDS_U_ALL)) {
 				throw new Exception('TikTok Api Error: Invalid field '.$f);
