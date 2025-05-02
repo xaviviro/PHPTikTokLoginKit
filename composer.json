@@ -13,7 +13,7 @@
     "require": {},
     "autoload": {
         "psr-4": {
-            "gimucco\\TikTokLoginKit\\": "src/"
+            "xaviviro\\TikTokLoginKit\\": "src/"
         }
     }
 }
