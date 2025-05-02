@@ -12,20 +12,20 @@
 namespace gimucco\TikTokLoginKit;
 
 class User {
-	private string $open_id;
-	private string $union_id;
-	private string $avatar;
-	private string $avatar_thumb;
-	private string $avatar_larger;
-	private string $display_name;
-	private string $bio;
-	private string $url;
-	private bool $is_verified;
-	private int $followers;
-	private int $following;
-	private int $likes;
-	private int $num_videos;
-	private string $handle;
+	private $open_id;
+	private $union_id;
+	private $avatar;
+	private $avatar_thumb;
+	private $avatar_larger;
+	private $display_name;
+	private $bio;
+	private $url;
+	private $is_verified;
+	private $followers;
+	private $following;
+	private $likes;
+	private $num_videos;
+	private $handle;
 
 	/**
 	 * Main constructor
@@ -48,7 +48,7 @@ class User {
 	 * @param string $handle @username of the User
 	 * @return void
 	 */
-	public function __construct(string $open_id, string $union_id, string $avatar, string $avatar_larger, string $display_name, string $avatar_thumb, string $bio, string $url, bool $is_verified, int $followers, int $following, int $likes, int $num_videos, string $handle) {
+	public function __construct($open_id, $union_id, $avatar, $avatar_larger, $display_name, $avatar_thumb, $bio, $url, $is_verified, $followers, $following, $likes, $num_videos, $handle) {
 		$this->open_id = $open_id;
 		$this->union_id = $union_id;
 		$this->avatar = $avatar;
@@ -73,7 +73,7 @@ class User {
 	 * @param object $json The user JSON returned by the APIs
 	 * @return User self
 	 */
-	public static function fromJson(object $json, bool $get_username_remote = false) {
+	public static function fromJson($json, $get_username_remote = false) {
 		$open_id = '';
 		$union_id = '';
 		$avatar = '';
@@ -249,7 +249,7 @@ class User {
 		return '';
 	}
 
-	private static function getProfileUrl(string $url) {
+	private static function getProfileUrl($url) {
 		$ch = curl_init($url);
 		curl_setopt($ch, CURLOPT_HEADER, false);
 		curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');
@@ -264,7 +264,7 @@ class User {
 		return $redirectURL;
 	}
 
-	private static function parseHandleFromUrl(string $url) {
+	private static function parseHandleFromUrl($url) {
 		preg_match('@www.tiktok.com%2F%40([^%]+)@', $url, $m);
 		if ($m && !empty($m[1])) {
 			return trim($m[1]);
