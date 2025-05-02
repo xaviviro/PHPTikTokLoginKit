@@ -143,7 +143,7 @@ class Connector {
 	 * @return string the URL to which you need to redirect the user
 	 * @throws Exception If the requested permissions are wrongly formatter
 	 */
-	public function getRedirect(array $permissions = [self::PERMISSION_USER_BASIC]) {
+	public function getRedirect(array $permissions = [self::PERMISSION_USER_BASIC,self::PERMISSION_USER_PROFILE]) {
 		foreach ($permissions as $permission) {
 			if (!in_array($permission, self::VALID_PERMISSIONS)) {
 				throw new Exception('Invalid Permission Requested. Valid permissions are: '.implode(", ", self::VALID_PERMISSIONS));
