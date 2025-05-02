@@ -59,7 +59,7 @@ class Connector {
 	public const FIELD_U_FOLLOWING = 'following_count';
 	public const FIELD_U_LIKES = 'likes_count';
 	public const FIELD_U_NUMVIDEOS = 'video_count';
-	public const FIELDS_U_ALL = [self::FIELD_U_OPENID, self::FIELD_U_UNIONID, self::FIELD_U_AVATAR, self::FIELD_U_AVATAR_THUMB, self::FIELD_U_AVATAR_LARGER, self::FIELD_U_DISPLAYNAME, self::FIELD_U_BIO, self::FIELD_U_URL, self::FIELD_U_ISVERIFIED, self::FIELD_U_FOLLOWERS, self::FIELD_U_FOLLOWING, self::FIELD_U_LIKES, self::FIELD_U_NUMVIDEOS];
+	public const FIELDS_U_ALL = [self::FIELD_U_OPENID, self::FIELD_U_UNIONID, self::FIELD_U_AVATAR, self::FIELD_U_AVATAR_THUMB, self::FIELD_U_AVATAR_LARGER, self::FIELD_U_DISPLAYNAME, self::FIELD_U_BIO, self::FIELD_U_URL, self::FIELD_U_ISVERIFIED, self::FIELD_U_FOLLOWERS, self::FIELD_U_FOLLOWING, self::FIELD_U_LIKES, self::FIELD_U_NUMVIDEOS, self::FIELDS_U_USERNAME];
 
 	// Fields for Video
 	public const FIELD_EMBED_HTML = "embed_html";
@@ -296,7 +296,7 @@ class Connector {
 	 * @return object the JSON containing the user data
 	 * @throws Exception If the API returns an error
 	 */
-	public function getUserInfo(array $fields = [self::FIELD_U_OPENID, self::FIELD_U_UNIONID, self::FIELD_U_AVATAR, self::FIELD_U_DISPLAYNAME, self::FIELDS_U_USERNAME]){
+	public function getUserInfo(array $fields = self::FIELDS_U_ALL){
 		foreach ($fields as $f) {
 			if (!in_array($f, self::FIELDS_U_ALL)) {
 				throw new Exception('TikTok Api Error: Invalid field '.$f);
