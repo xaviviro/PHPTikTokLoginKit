@@ -157,7 +157,7 @@ class Connector {
 		
 		error_log('Redirect URL: '.$redirect_uri);
 
-		return redirect_uri;
+		return $redirect_uri;
 	}
 
 	/**
