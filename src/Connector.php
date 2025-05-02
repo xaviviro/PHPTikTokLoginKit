@@ -49,6 +49,7 @@ class Connector {
 	public const FIELD_U_UNIONID = 'union_id';
 	public const FIELD_U_AVATAR = 'avatar_url';
 	public const FIELDS_U_USERNAME = 'username';
+	public const FIELD_U_PROFILE = 'profile_web_link';
 	public const FIELD_U_AVATAR_THUMB = 'avatar_url_100';
 	public const FIELD_U_AVATAR_LARGER = 'avatar_large_url';
 	public const FIELD_U_DISPLAYNAME = 'display_name';
@@ -59,7 +60,7 @@ class Connector {
 	public const FIELD_U_FOLLOWING = 'following_count';
 	public const FIELD_U_LIKES = 'likes_count';
 	public const FIELD_U_NUMVIDEOS = 'video_count';
-	public const FIELDS_U_ALL = [self::FIELD_U_OPENID, self::FIELD_U_UNIONID, self::FIELD_U_AVATAR, self::FIELD_U_AVATAR_THUMB, self::FIELD_U_AVATAR_LARGER, self::FIELD_U_DISPLAYNAME, self::FIELD_U_BIO, self::FIELD_U_URL, self::FIELD_U_ISVERIFIED, self::FIELD_U_FOLLOWERS, self::FIELD_U_FOLLOWING, self::FIELD_U_LIKES, self::FIELD_U_NUMVIDEOS, self::FIELDS_U_USERNAME];
+	public const FIELDS_U_ALL = [self::FIELD_U_OPENID, self::FIELD_U_UNIONID, self::FIELD_U_AVATAR, self::FIELD_U_AVATAR_THUMB, self::FIELD_U_AVATAR_LARGER, self::FIELD_U_DISPLAYNAME, self::FIELD_U_BIO, self::FIELD_U_URL, self::FIELD_U_ISVERIFIED, self::FIELD_U_FOLLOWERS, self::FIELD_U_FOLLOWING, self::FIELD_U_LIKES, self::FIELD_U_NUMVIDEOS, self::FIELDS_U_USERNAME, self::FIELD_U_PROFILE];
 
 	// Fields for Video
 	public const FIELD_EMBED_HTML = "embed_html";
@@ -445,7 +446,7 @@ class Connector {
 	 * @return User the User object
 	 * @throws Exception If the API returns an error
 	 */
-	public function getUser(array $fields = [self::FIELD_U_OPENID, self::FIELD_U_UNIONID, self::FIELD_U_AVATAR, self::FIELD_U_DISPLAYNAME], bool $get_username = false) {
+	public function getUser(array $fields = self::FIELDS_U_ALL, bool $get_username = false) {
 		try {
 			$json = $this->getUserInfo($fields);
 			return User::fromJson($json, $get_username);
